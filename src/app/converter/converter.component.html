@@ -1,0 +1,56 @@
+<div class="converter-min container">
+  <div class="converter-min_body row">
+    <div class="converter-min_item col-sm-12 col-lg-6">
+      <span>Міняю</span>
+      <div class="converter-min_item-value row">
+        <div class="col-sm-6 col-lg-6 col-6">
+         <input
+           [(ngModel)]="valuesFirst"
+           (ngModelChange)="calculateSecond()"
+           type="value" class="form-control"
+           id="exampleInputEmail1"
+           aria-describedby="emailHelp"
+           placeholder="0.00"
+         >
+        </div>
+        <div class="select col-sm-4 col-lg-4 col-4">
+          <select
+            [(ngModel)]="currencyFirst"
+            (ngModelChange)="calculateSecond()"
+            class="form-select"
+            id="exampleSelect1"
+          >
+            <option *ngFor="let state of states" [value]="state.cc">{{state.cc}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="converter-min_item col-sm-12 col-lg-6">
+      <span>Отримую</span>
+      <div class="converter-min_item-value row">
+        <div class="col-sm-6 col-lg-6 col-6">
+         <input
+           [(ngModel)]="valuesSecond"
+           (ngModelChange)="calculateFirst()"
+           type="value"
+           class="form-control"
+           id="exampleInputEmail1" placeholder="0.00"
+          >
+        </div>
+        <div class="select col-sm-4 col-lg-4 col-4">
+          <select
+            [(ngModel)]="currencySecond"
+            (ngModelChange)="calculateFirst()"
+            class="form-select"
+            id="exampleSelect1"
+          >
+            <option *ngFor="let state of states" [value]="state.cc">{{state.cc}}</option>
+          </select>
+        </div><br/>
+          <span *ngIf="states[0]" class="converter-min_item-currency-on">По курсу НБУ на {{states[0].exchangedate}}</span>
+    </div>
+  </div>
+  <div class="converter-min_footer row">
+    <a href="#" id="calculate" class=" btn-default" (click)="getCurrencies()">Розрахувати</a>
+  </div>
+</div>
